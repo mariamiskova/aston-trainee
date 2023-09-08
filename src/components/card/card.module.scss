@@ -1,0 +1,76 @@
+.container {
+  position: relative;
+  height: 415px;
+  width: 335px;
+  margin-bottom: 20px;
+
+  &:not(:nth-child(3n)) {
+    margin-right: 20px;
+  }
+}
+
+.img {
+  height: 415px;
+  width: 335px;
+  object-position: center;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 40px;
+  transition: background-color 0.5s;
+
+  &:hover {
+    background-color: rgba($color: #000000, $alpha: 0.7);
+  }
+
+  &:hover .overlay__text {
+    color: #fff;
+  }
+
+  .overlay__artist_title {
+    transition: color 0.5s;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 10px;
+  }
+  &:hover .overlay__artist_title {
+    color: #fff;
+  }
+
+  .overlay__artwork_type_title {
+    transition: color 0.5s;
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+
+  &:hover .overlay__artwork_type_title {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .overlay__title {
+    transition: color 0.5s;
+    font-size: 25px;
+    font-weight: 400;
+  }
+
+  &:hover .overlay__title {
+    color: #fff;
+  }
+
+  .overlay__date_display {
+    transition: color 0.5s;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+  &__text {
+    color: transparent;
+  }
+}
