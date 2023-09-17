@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PaginationItem, PictureItem } from "./types";
-import { fetchItems } from "../thunks/items/itemsThunks";
+import { fetchArtworks } from "../thunks/artworks/artworksThunks";
 
-export interface ItemsState {
+export interface ArtworksState {
   data: PictureItem[];
   pagination: PaginationItem;
 }
 
-const initialState: ItemsState = {
+const initialState: ArtworksState = {
   data: [],
   pagination: {
     current_page: 1,
@@ -18,14 +18,14 @@ const initialState: ItemsState = {
   },
 };
 
-export const itemsSlice = createSlice({
-  name: "items",
+export const artworksSlice = createSlice({
+  name: "artworks",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(
-      fetchItems.fulfilled,
-      (state, action: { payload: ItemsState; type: string }) => {
+      fetchArtworks.fulfilled,
+      (state, action: { payload: ArtworksState; type: string }) => {
         state.data = action.payload.data;
         state.pagination = action.payload.pagination;
       }
@@ -33,4 +33,4 @@ export const itemsSlice = createSlice({
   },
 });
 
-export default itemsSlice.reducer;
+export default artworksSlice.reducer;

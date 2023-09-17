@@ -1,6 +1,6 @@
 import React from "react";
-import { PictureItem } from "../../store/items/types";
-import { classNames } from "../../utils/classNames";
+import { PictureItem } from "../../store/artworks/types";
+import classNames from "classnames";
 import { imgLoader } from "../../utils/imgLoader";
 import styles from "./card.module.scss";
 

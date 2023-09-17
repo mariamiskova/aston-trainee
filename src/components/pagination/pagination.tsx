@@ -9,9 +9,9 @@ import React, {
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store";
-import { pagination } from "../../store/items/itemsSelectors";
-import { fetchItems } from "../../store/thunks/items/itemsThunks";
-import { classNames } from "../../utils/classNames";
+import { pagination } from "../../store/artworks/artworksSelectors";
+import { fetchArtworks } from "../../store/thunks/artworks/artworksThunks";
+import classNames from "classnames";
 
 import styles from "./pagination.module.scss";
 
@@ -21,7 +21,6 @@ const getPaginationItems = (
   callbackFetchItems: (page: number) => void
 ) => {
   const handleClick = (e: SyntheticEvent) => {
-    console.log((e.target as HTMLLIElement).id);
     const targetId = (e.target as HTMLLIElement).id;
 
     if (targetId && Number(targetId) !== current) {
@@ -178,7 +177,7 @@ const Pagination: ForwardRefExoticComponent<
   const paginationData = useSelector(pagination);
 
   const callbackFetchItems = (page: number) => {
-    dispatch(fetchItems({ limit: 12, page: page }));
+    dispatch(fetchArtworks({ limit: 12, page: page }));
     setPage(() => page);
   };
 
@@ -198,8 +197,8 @@ const Pagination: ForwardRefExoticComponent<
   };
 
   useEffect(() => {
-    console.log(page);
     callbackFetchItems(page);
+
     if (ref) {
       (
         (ref as RefObject<HTMLDivElement>).current as HTMLDivElement

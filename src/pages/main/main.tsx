@@ -3,15 +3,13 @@ import { useSelector } from "react-redux";
 import Card from "../../components/card/card";
 import Pagination from "../../components/pagination/pagination";
 import Search from "../../components/search/search";
-import { items } from "../../store/items/itemsSelectors";
+import { items } from "../../store/artworks/artworksSelectors";
 
 import styles from "./main.module.scss";
 
 const Main = () => {
   const itemsData = useSelector(items);
   const ref = useRef(null);
-
-  useEffect(() => {}, [itemsData]);
 
   return (
     <div className={styles.container}>

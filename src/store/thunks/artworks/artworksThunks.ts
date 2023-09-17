@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchItems = createAsyncThunk(
+export const fetchArtworks = createAsyncThunk(
   "items/fetchItems",
   async (params: { limit: number; page: number }) => {
     const response = await fetch(

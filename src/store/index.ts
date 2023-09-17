@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import itemsReducer from "./items/itemsSlice";
+import artworksReducer from "./artworks/artworksSlice";
 
 export const store = configureStore({
   reducer: {
-    items: itemsReducer,
+    arworks: artworksReducer,
   },
 });
 
