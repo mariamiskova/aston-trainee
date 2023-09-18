@@ -1,6 +1,6 @@
 enum PictureSizes {
   "small" = 300,
-  "normal" = 600,
+  "normal" = 400,
 }
 
 export const imgLoader = (id: string, size: "small" | "normal") => {
