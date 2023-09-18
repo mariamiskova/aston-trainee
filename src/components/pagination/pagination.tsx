@@ -170,11 +170,10 @@ const getPaginationItems = (
 const Pagination: ForwardRefExoticComponent<
   RefAttributes<RefObject<HTMLDivElement>>
 > = forwardRef((props, ref) => {
-  const [page, setPage] = useState<number>(1);
-
   const dispatch: AppDispatch = useDispatch();
-
   const paginationData = useSelector(pagination);
+
+  const [page, setPage] = useState<number>(paginationData.current_page || 1);
 
   const callbackFetchItems = (page: number) => {
     dispatch(fetchArtworks({ limit: 12, page: page }));

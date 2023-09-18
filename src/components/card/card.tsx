@@ -3,8 +3,10 @@ import { PictureItem } from "../../store/artworks/types";
 import classNames from "classnames";
 import { imgLoader } from "../../utils/imgLoader";
 import styles from "./card.module.scss";
+import { Link } from "react-router-dom";
 
 const Card = ({
+  id,
   image_id,
   artist_title,
   date_display,
@@ -12,7 +14,7 @@ const Card = ({
   artwork_type_title,
 }: PictureItem) => {
   return (
-    <div className={styles.container}>
+    <Link className={styles.container} to={`/${id}`}>
       <img
         className={styles.img}
         src={imgLoader(image_id, "small")}
@@ -49,7 +51,7 @@ const Card = ({
           {date_display}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
