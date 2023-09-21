@@ -11,7 +11,7 @@ const Header = () => {
         <Link className={styles.logo} to={"/"}>
           <img alt="logo" src={Logo} />
         </Link>
-        <div>
+        <div className={styles.link_container}>
           <Link className={styles.link} to={"/"}>
             Sign in
           </Link>
