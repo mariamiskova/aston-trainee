@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import artworksReducer from "./artworks/artworksSlice";
-import searchReduser from "./search/searchSlise";
+import searchReduser from "./search/searchSlice";
 
 export const store = configureStore({
   reducer: {

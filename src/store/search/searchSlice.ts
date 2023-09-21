@@ -1,4 +1,4 @@
-import { fetchSearchArtworks } from "./../thunks/search/searchThunks";
+import { fetchSearchArtworks } from "../thunks/search/searchThunks";
 import { SearchItem } from "./searchTypes";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -15,12 +15,9 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(
-      fetchSearchArtworks.fulfilled,
-      (state, action: { payload: SearchState; type: string }) => {
-        state.data = action.payload.data;
-      }
-    );
+    builder.addCase(fetchSearchArtworks.fulfilled, (state, action) => {
+      state.data = action.payload.data;
+    });
   },
 });
 
