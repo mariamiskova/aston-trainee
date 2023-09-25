@@ -49,12 +49,12 @@ const History = () => {
   return (
     <div className={styles.container}>
       {historyList.length > 0 ? (
-        <div onClick={(e) => handleClick(e)}>
+        <div onClick={handleClick}>
           {historyList.map((item) => (
             <div className={styles.item} key={item}>
               <div
                 className={styles.item_title}
-                onClick={(e) => handleHistoryItemClick(e)}
+                onClick={handleHistoryItemClick}
                 id={item}
               >
                 {item}
@@ -64,10 +64,7 @@ const History = () => {
               </button>
             </div>
           ))}
-          <button
-            className={styles.button}
-            onClick={(e) => handleClearHistoryClick(e)}
-          >
+          <button className={styles.button} onClick={handleClearHistoryClick}>
             Clear history
           </button>
         </div>

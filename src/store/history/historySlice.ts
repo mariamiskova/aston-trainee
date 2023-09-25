@@ -13,7 +13,7 @@ export const artworksSlice = createSlice({
   initialState,
   reducers: {
     addHistoryItem(state, action) {
-      state.historyArts = [...state.historyArts, action.payload];
+      state.historyArts.push(action.payload);
     },
     removeHistoryItem(state, action) {
       state.historyArts = state.historyArts.filter(
