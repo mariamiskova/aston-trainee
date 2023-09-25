@@ -1,0 +1,35 @@
+.form {
+  margin: 0 auto;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+.input {
+  height: 30px;
+  margin-bottom: 20px;
+  border: #d9d9d9 1px solid;
+
+  &:focus-visible {
+    outline: 1px solid #b50938;
+  }
+}
+.button {
+  height: 40px;
+  background: #b50938;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.link {
+  color: #222;
+}
+
+.error {
+  color: #b50938;
+  margin-bottom: 10px;
+}

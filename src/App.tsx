@@ -7,7 +7,10 @@ import Header from "./components/header/header";
 import Detail from "./pages/detail/detail";
 
 import Main from "./pages/main/main";
+import Register from "./pages/register/register";
 import { store } from "./store";
+import "./firebase";
+import Login from "./pages/login/login";
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/:artworkId" element={<Detail />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </BrowserRouter>

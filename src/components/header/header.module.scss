@@ -27,6 +27,7 @@
   text-decoration: none;
   color: #222;
   cursor: pointer;
+  margin-left: 60px;
 
   &:last-child {
     margin-left: 60px;
@@ -35,4 +36,16 @@
   &:hover {
     color: #b50938;
   }
+}
+
+.button {
+  z-index: 1;
+  padding: 5px 15px;
+  border: 1px solid #b50938;
+  color: #b50938;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  cursor: pointer;
+  margin-left: 60px;
 }
