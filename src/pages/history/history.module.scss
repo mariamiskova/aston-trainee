@@ -1,0 +1,44 @@
+.container {
+  margin-top: 30px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #d9d9d9;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
+
+  &_title {
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  &_button {
+    border: 1px solid #b50938;
+    background-color: transparent;
+    color: #b50938;
+    cursor: pointer;
+    min-width: 30px;
+    min-height: 30px;
+  }
+}
+
+.button {
+  border: 1px solid #b50938;
+  background-color: transparent;
+  color: #b50938;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.message {
+  font-size: 20px;
+  color: #b50938;
+}

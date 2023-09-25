@@ -14,12 +14,13 @@ import styles from "./main.module.scss";
 const Main = () => {
   const itemsData = useSelector(artworks);
   const isLoading = useSelector(isArtworksLoading);
+
   const ref = useRef(null);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={ref}>
       <Search />
-      <div style={{ display: "flex", flexWrap: "wrap" }} ref={ref}>
+      <div className={styles.wrapper}>
         {isLoading ? (
           <div className={styles.loader}>
             <Grid

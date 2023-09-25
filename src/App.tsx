@@ -11,6 +11,7 @@ import Register from "./pages/register/register";
 import { store } from "./store";
 import "./firebase";
 import Login from "./pages/login/login";
+import History from "./pages/history/history";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/:artworkId" element={<Detail />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/history" element={<History />} />
           </Routes>
         </div>
       </BrowserRouter>

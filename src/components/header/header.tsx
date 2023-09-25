@@ -28,7 +28,7 @@ const Header = () => {
               <Link className={styles.link} to={"/"}>
                 Favorites
               </Link>
-              <Link className={styles.link} to={"/"}>
+              <Link className={styles.link} to={"/history"}>
                 History
               </Link>
               <button className={styles.button} onClick={handleClick}>
