@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppDispatch } from "../../store";
-import { searchData } from "../../store/search/searchSelectors";
+import { addHistoryItem } from "../../store/history/historySlice";
+import { searchData, searchValue } from "../../store/search/searchSelectors";
 import { fetchSearchArtworks } from "../../store/thunks/search/searchThunks";
 import styles from "./search.module.scss";
 
@@ -12,14 +13,25 @@ const Search = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const searhDatas = useSelector(searchData);
+  const searchValueData = useSelector(searchValue);
 
-  console.log(searhDatas);
+  useEffect(() => {
+    if (searchValueData && searchValueData !== inputValue) {
+      setInputValue(() => searchValueData);
+      setIsOpen(() => true);
+
+      dispatch(fetchSearchArtworks(searchValueData));
+    }
+  }, [searchValueData]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    dispatch(fetchSearchArtworks(inputValue));
-    setIsOpen(() => true);
+    if (inputValue) {
+      dispatch(fetchSearchArtworks(inputValue));
+      dispatch(addHistoryItem(inputValue));
+      setIsOpen(() => true);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +42,7 @@ const Search = () => {
 
   const handleClick = () => {
     setIsOpen(() => false);
+    setInputValue(() => "");
   };
 
   return (
