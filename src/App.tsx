@@ -12,6 +12,7 @@ import { store } from "./store";
 import "./firebase";
 import Login from "./pages/login/login";
 import History from "./pages/history/history";
+import Favorite from "./pages/favorite/favorite";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/history" element={<History />} />
+            <Route path="/favorite" element={<Favorite />} />
           </Routes>
         </div>
       </BrowserRouter>

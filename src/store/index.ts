@@ -3,6 +3,7 @@ import artworksReducer from "./artworks/artworksSlice";
 import searchReduser from "./search/searchSlice";
 import userReduser from "./authorization/authorizationSlice";
 import historyReducer from "./history/historySlice";
+import favoriteReducer from "./favorite/favoriteSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     search: searchReduser,
     auth: userReduser,
     history: historyReducer,
+    favorite: favoriteReducer,
   },
 });
 

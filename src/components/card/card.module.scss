@@ -7,6 +7,16 @@
   &:not(:nth-child(3n)) {
     margin-right: 20px;
   }
+
+  &__favorite {
+    height: 40px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
 }
 
 .img {

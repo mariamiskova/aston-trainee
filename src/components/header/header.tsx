@@ -25,7 +25,7 @@ const Header = () => {
         <div className={styles.link_container}>
           {isAuth ? (
             <>
-              <Link className={styles.link} to={"/"}>
+              <Link className={styles.link} to={"/favorite"}>
                 Favorites
               </Link>
               <Link className={styles.link} to={"/history"}>
