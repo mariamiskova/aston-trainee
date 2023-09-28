@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Card from "../../components/card/card";
+import CrossIcon from "../../components/ui/icons/crossIcon/crossIcon";
+import LikeIcon from "../../components/ui/icons/likeIcon/likeIcon";
 import { useAuth } from "../../hooks/useAuth";
 import { AppDispatch } from "../../store";
 import { favoriteData } from "../../store/favorite/favoriteSelectors";
@@ -9,6 +11,7 @@ import {
   clearFavorites,
   removeFavoriteItem,
 } from "../../store/favorite/favoriteSlice";
+import { isThisItemOnFavorites } from "../../utils/checkItemOnFavorite";
 import styles from "./favorite.module.scss";
 
 const Favorite = () => {
@@ -40,7 +43,13 @@ const Favorite = () => {
               <Card
                 favoriteCallback={favoriteCallback}
                 {...props}
-                itIsFavoritePage
+                buttonIcon={
+                  isThisItemOnFavorites(props.id, favoriteItems) ? (
+                    <CrossIcon />
+                  ) : (
+                    <LikeIcon />
+                  )
+                }
               />
             ))}
           </div>

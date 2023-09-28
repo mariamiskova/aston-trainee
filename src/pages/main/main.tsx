@@ -1,9 +1,11 @@
-import React, { useCallback, useRef } from "react";
+import React, { useRef } from "react";
 import { Grid } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/card/card";
 import Pagination from "../../components/pagination/pagination";
 import Search from "../../components/search/search";
+import LikeIcon from "../../components/ui/icons/likeIcon/likeIcon";
+import SelectedIcon from "../../components/ui/icons/selectedIcon/selectedIcon";
 import { AppDispatch } from "../../store";
 import {
   artworks,
@@ -11,6 +13,7 @@ import {
 } from "../../store/artworks/artworksSelectors";
 import { favoriteData } from "../../store/favorite/favoriteSelectors";
 import { addFavoriteItem } from "../../store/favorite/favoriteSlice";
+import { isThisItemOnFavorites } from "../../utils/checkItemOnFavorite";
 
 import styles from "./main.module.scss";
 
@@ -21,21 +24,6 @@ const Main = () => {
   const dispatch: AppDispatch = useDispatch();
 
   const ref = useRef(null);
-
-  const isThisItemOnFavorites = useCallback(
-    (currentId: string) => {
-      const haveItem = favoriteItems.find(
-        ({ id }) => String(currentId) === String(id)
-      );
-
-      if (haveItem) {
-        return true;
-      }
-
-      return false;
-    },
-    [favoriteItems]
-  );
 
   const favoriteCallback = (callbackId: string) => {
     const favoriteItem = itemsData.find(({ id }) => id === callbackId);
@@ -68,7 +56,14 @@ const Main = () => {
               <Card
                 favoriteCallback={favoriteCallback}
                 key={data.id}
-                inFavorites={isThisItemOnFavorites(data.id)}
+                buttonIcon={
+                  isThisItemOnFavorites(data.id, favoriteItems) ? (
+                    <SelectedIcon />
+                  ) : (
+                    <LikeIcon />
+                  )
+                }
+                disabledButton={isThisItemOnFavorites(data.id, favoriteItems)}
                 {...data}
               />
             ))}
