@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Grid } from "react-loader-spinner";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { AppDispatch } from "../../store";
 import { addHistoryItem } from "../../store/history/historySlice";
-import { searchData, searchValue } from "../../store/search/searchSelectors";
+import {
+  searchData,
+  searchLoading,
+  searchValue,
+} from "../../store/search/searchSelectors";
 import { fetchSearchArtworks } from "../../store/thunks/search/searchThunks";
 import styles from "./search.module.scss";
 
@@ -14,6 +19,7 @@ const Search = () => {
 
   const searhDatas = useSelector(searchData);
   const searchValueData = useSelector(searchValue);
+  const isSearchLoading = useSelector(searchLoading);
 
   useEffect(() => {
     if (searchValueData && searchValueData !== inputValue) {
@@ -57,17 +63,32 @@ const Search = () => {
 
         <div className={styles.search_wrapper__container__list}>
           {isOpen &&
-            searhDatas.length > 0 &&
-            searhDatas.map(({ id, title }) => {
-              return (
-                <Link
-                  to={`/${id}`}
-                  className={styles.search_wrapper__container__list__option}
-                >
-                  {title}
-                </Link>
-              );
-            })}
+            (isSearchLoading ? (
+              <div className={styles.loader}>
+                <Grid
+                  height="60"
+                  width="60"
+                  color="#b50938"
+                  ariaLabel="grid-loading"
+                  radius="12.5"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                  visible={true}
+                />
+              </div>
+            ) : (
+              searhDatas.length > 0 &&
+              searhDatas.map(({ id, title }) => {
+                return (
+                  <Link
+                    to={`/${id}`}
+                    className={styles.search_wrapper__container__list__option}
+                  >
+                    {title}
+                  </Link>
+                );
+              })
+            ))}
         </div>
       </div>
       <button className={styles.search_wrapper__button} type="submit">

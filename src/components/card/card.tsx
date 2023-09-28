@@ -1,9 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { PictureItem } from "../../store/artworks/types";
 import classNames from "classnames";
 import { imgLoader } from "../../utils/imgLoader";
 import styles from "./card.module.scss";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/useAuth";
+
+interface ICard extends PictureItem {
+  favoriteCallback?: (id: string) => void;
+  buttonIcon?: ReactNode;
+  disabledButton?: boolean;
+}
 
 const Card = ({
   id,
@@ -12,7 +19,22 @@ const Card = ({
   date_display,
   title,
   artwork_type_title,
-}: PictureItem) => {
+  favoriteCallback,
+  buttonIcon,
+  disabledButton = false,
+}: ICard) => {
+  const { isAuth } = useAuth();
+
+  const handleFavoriteClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+
+    if (favoriteCallback) {
+      favoriteCallback(id);
+    }
+  };
+
   return (
     <Link className={styles.container} to={`/${id}`}>
       <img
@@ -51,6 +73,16 @@ const Card = ({
           {date_display}
         </div>
       </div>
+
+      {isAuth && buttonIcon && (
+        <button
+          className={styles.container__favorite}
+          onClick={handleFavoriteClick}
+          disabled={disabledButton}
+        >
+          {buttonIcon}
+        </button>
+      )}
     </Link>
   );
 };

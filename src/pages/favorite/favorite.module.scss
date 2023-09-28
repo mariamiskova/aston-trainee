@@ -1,0 +1,21 @@
+.wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button {
+  border: 1px solid #b50938;
+  background-color: transparent;
+  color: #b50938;
+  cursor: pointer;
+  min-width: 30px;
+  min-height: 30px;
+  margin-bottom: 40px;
+}
+
+.message {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #b50938;
+}

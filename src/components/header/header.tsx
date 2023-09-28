@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./header.module.scss";
-import Logo from "../ui/icons/logo.svg";
 import { useAuth } from "../../hooks/useAuth";
 import { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
 import { removeUser } from "../../store/authorization/authorizationSlice";
+import LogoIcon from "../ui/icons/logoIcon/logoIcon";
 
 const Header = () => {
   const { isAuth } = useAuth();
@@ -20,12 +20,12 @@ const Header = () => {
     <div className={styles.container}>
       <div className={styles.wrapper}>
         <Link className={styles.logo} to={"/"}>
-          <img alt="logo" src={Logo} />
+          <LogoIcon />
         </Link>
         <div className={styles.link_container}>
           {isAuth ? (
             <>
-              <Link className={styles.link} to={"/"}>
+              <Link className={styles.link} to={"/favorite"}>
                 Favorites
               </Link>
               <Link className={styles.link} to={"/history"}>

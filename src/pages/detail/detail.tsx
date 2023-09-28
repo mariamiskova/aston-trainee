@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { AppDispatch } from "../../store";
@@ -11,19 +11,47 @@ import { imgLoader } from "../../utils/imgLoader";
 import { Grid } from "react-loader-spinner";
 
 import styles from "./detail.module.scss";
+import { favoriteData } from "../../store/favorite/favoriteSelectors";
+import {
+  addFavoriteItem,
+  removeFavoriteItem,
+} from "../../store/favorite/favoriteSlice";
+import { useAuth } from "../../hooks/useAuth";
+import LikeIcon from "../../components/ui/icons/likeIcon/likeIcon";
+import CrossIcon from "../../components/ui/icons/crossIcon/crossIcon";
 
 const Detail = () => {
   const { artworkId } = useParams();
   const dispatch: AppDispatch = useDispatch();
+  const { isAuth } = useAuth();
 
   const detailArtworkData = useSelector(detailArtwork);
   const isLoading = useSelector(isDetailArtworksLoading);
+  const favoriteItems = useSelector(favoriteData);
+
+  const isThisItemOnFavorites = useCallback(() => {
+    const haveItem = favoriteItems.find(({ id }) => artworkId === String(id));
+
+    if (haveItem) {
+      return true;
+    }
+
+    return false;
+  }, [artworkId, favoriteItems]);
 
   useEffect(() => {
     if (artworkId) {
       dispatch(fetchDetailArtwork(artworkId));
     }
   }, []);
+
+  const handleRemoveFromFavoritesClick = () => {
+    dispatch(removeFavoriteItem(Number(artworkId)));
+  };
+
+  const handleAddToFavoritesClick = () => {
+    dispatch(addFavoriteItem(detailArtworkData));
+  };
 
   return (
     <div className={styles.imformation_container}>
@@ -64,6 +92,23 @@ const Detail = () => {
             <div className={styles.text}>
               {detailArtworkData.provenance_text}
             </div>
+            {isAuth &&
+              (isThisItemOnFavorites() ? (
+                <button
+                  className={styles.dislike}
+                  onClick={handleRemoveFromFavoritesClick}
+                >
+                  <CrossIcon />
+                </button>
+              ) : (
+                <button
+                  className={styles.favorite}
+                  onClick={handleAddToFavoritesClick}
+                >
+                  <LikeIcon />
+                </button>
+              ))}
+
             <Link className={styles.button} to={"/"}>
               Back to main page
             </Link>
