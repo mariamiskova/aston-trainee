@@ -13,6 +13,8 @@
     "@types/react-dom": "^18.2.7",
     "classnames": "^2.3.2",
     "firebase": "^10.4.0",
+    "lodash": "^4.17.21",
+    "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.4.5",
@@ -48,6 +50,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@types/lodash": "^4.14.199",
     "file-loader": "^6.2.0",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2",

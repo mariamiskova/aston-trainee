@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./header.module.scss";
@@ -8,7 +8,11 @@ import { useDispatch } from "react-redux";
 import { removeUser } from "../../store/authorization/authorizationSlice";
 import LogoIcon from "../ui/icons/logoIcon/logoIcon";
 
-const Header = () => {
+interface IHeader {
+  themeButton: ReactNode;
+}
+
+const Header = ({ themeButton }: IHeader) => {
   const { isAuth } = useAuth();
   const dispatch: AppDispatch = useDispatch();
 
@@ -22,6 +26,7 @@ const Header = () => {
         <Link className={styles.logo} to={"/"}>
           <LogoIcon />
         </Link>
+        {themeButton}
         <div className={styles.link_container}>
           {isAuth ? (
             <>

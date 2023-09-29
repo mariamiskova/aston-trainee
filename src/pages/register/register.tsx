@@ -34,8 +34,6 @@ const Register = () => {
           })
         );
         navigate("/");
-
-        console.log(user, "USER");
       })
       .catch((error) => {
         const errorMessage = error.message;

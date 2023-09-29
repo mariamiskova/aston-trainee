@@ -19,7 +19,7 @@ const History = () => {
 
   useEffect(() => {
     if (!isAuth) {
-      navigate("/");
+      navigate("/register");
     }
   }, [isAuth]);
 

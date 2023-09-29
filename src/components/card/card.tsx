@@ -5,6 +5,7 @@ import { imgLoader } from "../../utils/imgLoader";
 import styles from "./card.module.scss";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import PropTypes from "prop-types";
 
 interface ICard extends PictureItem {
   favoriteCallback?: (id: string) => void;
@@ -85,6 +86,18 @@ const Card = ({
       )}
     </Link>
   );
+};
+
+Card.propTypes = {
+  id: PropTypes.string.isRequired,
+  image_id: PropTypes.string.isRequired,
+  artist_title: PropTypes.string.isRequired,
+  date_display: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  artwork_type_title: PropTypes.string.isRequired,
+  favoriteCallback: PropTypes.func,
+  buttonIcon: PropTypes.element,
+  disabledButton: PropTypes.bool,
 };
 
 export default Card;
