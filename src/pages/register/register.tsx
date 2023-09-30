@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store";
 import {
   setError,
   setUser,
 } from "../../store/authorization/authorizationSlice";
-import styles from "./register.module.scss";
 import { userData } from "../../store/authorization/authorizationSelector";
+import Form from "../../components/form/form";
 
 const Register = () => {
   const [email, setEmail] = useState<string>("");
@@ -43,27 +43,16 @@ const Register = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={(e) => handleSubmit(e)}>
-      <input
-        className={styles.input}
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        type="email"
-      />
-      <input
-        className={styles.input}
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        type="password"
-      />
-      {authData.error && <div className={styles.error}>{authData.error}</div>}
-      <button className={styles.button} type="submit">
-        Submit
-      </button>
-      <Link className={styles.link} to={"/login"}>
-        Go to Log in
-      </Link>
-    </form>
+    <Form
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      handleSubmit={handleSubmit}
+      authData={authData}
+      buttonText={"Submit"}
+      linkText={"Go to Sign in"}
+    />
   );
 };
 

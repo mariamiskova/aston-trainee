@@ -1,15 +1,15 @@
 import React, { ReactNode, useCallback, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
-import { IContext, Provider } from "../context";
+import { ContextInterface, Provider } from "../context";
 import { defaultTheme, themes } from "../constants";
 
-interface IThemeProvider {
-  theme: Partial<IContext>;
+interface ThemeProviderInterface {
+  theme: Partial<ContextInterface>;
   children: ReactNode;
 }
 
-function ThemeProvider({ theme, children }: IThemeProvider) {
+function ThemeProvider({ theme, children }: ThemeProviderInterface) {
   const [themeValue, setThemeValue] = useState(true);
 
   const toggleTheme = useCallback(() => {

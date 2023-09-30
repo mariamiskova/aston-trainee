@@ -8,11 +8,11 @@ import { useDispatch } from "react-redux";
 import { removeUser } from "../../store/authorization/authorizationSlice";
 import LogoIcon from "../ui/icons/logoIcon/logoIcon";
 
-interface IHeader {
+interface HeaderInterface {
   themeButton: ReactNode;
 }
 
-const Header = ({ themeButton }: IHeader) => {
+const Header = ({ themeButton }: HeaderInterface) => {
   const { isAuth } = useAuth();
   const dispatch: AppDispatch = useDispatch();
 
@@ -30,7 +30,7 @@ const Header = ({ themeButton }: IHeader) => {
         <div className={styles.link_container}>
           {isAuth ? (
             <>
-              <Link className={styles.link} to={"/favorite"}>
+              <Link className={styles.link} to={"/favorites"}>
                 Favorites
               </Link>
               <Link className={styles.link} to={"/history"}>
@@ -42,10 +42,10 @@ const Header = ({ themeButton }: IHeader) => {
             </>
           ) : (
             <>
-              <Link className={styles.link} to={"/login"}>
+              <Link className={styles.link} to={"/signin"}>
                 Sign in
               </Link>
-              <Link className={styles.link} to={"/register"}>
+              <Link className={styles.link} to={"/signup"}>
                 Sign up
               </Link>
             </>

@@ -2,11 +2,11 @@ import React from "react";
 
 import styles from "./switchButton.module.scss";
 
-interface ISwitchButton {
+interface SwitchButtonInterface {
   callbackToggle: () => void;
 }
 
-const SwitchButton = ({ callbackToggle }: ISwitchButton) => {
+const SwitchButton = ({ callbackToggle }: SwitchButtonInterface) => {
   const handleClick = () => {
     callbackToggle();
   };

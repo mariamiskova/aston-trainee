@@ -51,7 +51,9 @@ export function componentWithContext(component: ReactNode) {
             <BrowserRouter>
               <Header
                 themeButton={
-                  <SwitchButton callbackToggle={theme.toggleTheme} />
+                  <SwitchButton
+                    callbackToggle={theme.toggleTheme as () => void}
+                  />
                 }
               />
 
@@ -59,10 +61,10 @@ export function componentWithContext(component: ReactNode) {
                 <Routes>
                   <Route path="/" element={<Main />} />
                   <Route path="/:artworkId" element={<Detail />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Register />} />
+                  <Route path="/signin" element={<Login />} />
                   <Route path="/history" element={<History />} />
-                  <Route path="/favorite" element={<Favorite />} />
+                  <Route path="/favorites" element={<Favorite />} />
                 </Routes>
               </div>
             </BrowserRouter>
