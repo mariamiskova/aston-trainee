@@ -22,7 +22,7 @@ const Favorite = () => {
 
   useEffect(() => {
     if (!isAuth) {
-      navigate("/");
+      navigate("/register");
     }
   }, [isAuth]);
 
