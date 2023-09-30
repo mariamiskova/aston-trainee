@@ -22,10 +22,7 @@ const ErrorBoundary = lazy(
 );
 
 export function componentWithContext(component: ReactNode) {
-  const renderMyComponent = (theme: {
-    themeColor: string;
-    toggleTheme: () => void;
-  }) => {
+  const renderMyComponent = (theme: Record<string, string | (() => void)>) => {
     return (
       <div
         style={{

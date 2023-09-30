@@ -7,7 +7,7 @@ interface ISwitchButton {
 }
 
 const SwitchButton = ({ callbackToggle }: ISwitchButton) => {
-  const handleClick = (e: any) => {
+  const handleClick = () => {
     callbackToggle();
   };
 

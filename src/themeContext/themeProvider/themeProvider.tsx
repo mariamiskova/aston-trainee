@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
 import { IContext, Provider } from "../context";
@@ -15,7 +15,10 @@ function ThemeProvider({ theme, children }: IThemeProvider) {
     setThemeValue((prev) => !prev);
   };
 
-  const themeColor = themeValue ? "#fff" : "#0000001a";
+  const themeColor = useMemo(
+    () => (themeValue ? "#fff" : "#0000001a"),
+    [themeValue]
+  );
 
   return <Provider value={{ themeColor, toggleTheme }}>{children}</Provider>;
 }
