@@ -4,26 +4,26 @@
 # 1 уровень (необходимый минимум)
 
 ## React
-Пишем функциональные компоненты c хуками в приоритете над классовыми.
-Есть разделение на умные и глупые компоненты: Login, Register(smart) / Form(simple).
-Есть рендеринг списков: searhDatas, favoriteItems, historyList, itemsData.
-Реализована хотя бы одна форма: Search, Login, Register.
-Есть применение Контекст API: themeContext.
-Есть применение предохранителя: ErrorBoundary.
-Есть хотя бы один кастомный хук: useAuth.
-Хотя бы несколько компонентов используют PropTypes: Card, ErrorBoundary, ThemeConsumer, ThemeProvider.
-Поиск не триггерит много запросов к серверу: Не выполнено, поиск по кнопке Search.
-Есть применение lazy + Suspense: App.
+1) Пишем функциональные компоненты c хуками в приоритете над классовыми.
+2) Есть разделение на умные и глупые компоненты: Login, Register(smart) / Form(simple).
+3) Есть рендеринг списков: searhDatas, favoriteItems, historyList, itemsData.
+4) Реализована хотя бы одна форма: Search, Login, Register.
+5) Есть применение Контекст API: themeContext.
+6) Есть применение предохранителя: ErrorBoundary.
+7) Есть хотя бы один кастомный хук: useAuth.
+8) Хотя бы несколько компонентов используют PropTypes: Card, ErrorBoundary, ThemeConsumer, ThemeProvider.
+9) Поиск не триггерит много запросов к серверу: Не выполнено, поиск по кнопке Search.
+10) Есть применение lazy + Suspense: App.
 
 ## Redux
-Используем Modern Redux with Redux Toolkit: store.
-Используем слайсы: artworksSlice, authorizationSlice, favoriteSlice, historySlice, searchSlice.
-Есть хотя бы одна кастомная мидлвара: Не выполнено, не смогла найти место для применения.
-Используется RTK Query: Не выполнено.
-Используется Transforming Responses: Не выполнено, не смогла найти место для применения.
+1) Используем Modern Redux with Redux Toolkit: store.
+2) Используем слайсы: artworksSlice, authorizationSlice, favoriteSlice, historySlice, searchSlice.
+3) Есть хотя бы одна кастомная мидлвара: Не выполнено, не смогла найти место для применения.
+4) Используется RTK Query: Не выполнено.
+5) Используется Transforming Responses: Не выполнено, не смогла найти место для применения.
 
 # 2 уровень (необязательный)
 
-Использован TypeScript.
-Использован Firebase для учетных записей пользователей.
-Используются мемоизированные селекторы.
+1) Использован TypeScript.
+2) Использован Firebase для учетных записей пользователей.
+3) Используются мемоизированные селекторы.
