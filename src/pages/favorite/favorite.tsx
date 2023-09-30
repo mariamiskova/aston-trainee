@@ -22,7 +22,7 @@ const Favorite = () => {
 
   useEffect(() => {
     if (!isAuth) {
-      navigate("/register");
+      navigate("/signup");
     }
   }, [isAuth]);
 
@@ -42,6 +42,7 @@ const Favorite = () => {
             {favoriteItems.map((props) => (
               <Card
                 favoriteCallback={favoriteCallback}
+                key={props.id}
                 {...props}
                 buttonIcon={
                   isThisItemOnFavorites(props.id, favoriteItems) ? (

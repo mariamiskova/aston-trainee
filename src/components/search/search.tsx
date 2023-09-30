@@ -83,6 +83,7 @@ const Search = () => {
                   <Link
                     to={`/${id}`}
                     className={styles.search_wrapper__container__list__option}
+                    key={id}
                   >
                     {title}
                   </Link>

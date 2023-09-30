@@ -1,7 +1,7 @@
 import { themeLight } from "./constants";
 import { createContext } from "react";
 
-export interface IContext {
+export interface ContextInterface {
   themeColor: string;
   toggleTheme: () => void;
 }

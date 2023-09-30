@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
 import PropTypes from "prop-types";
 
-interface ICard extends PictureItem {
+interface CardInterface extends PictureItem {
   favoriteCallback?: (id: string) => void;
   buttonIcon?: ReactNode;
   disabledButton?: boolean;
@@ -23,7 +23,7 @@ const Card = ({
   favoriteCallback,
   buttonIcon,
   disabledButton = false,
-}: ICard) => {
+}: CardInterface) => {
   const { isAuth } = useAuth();
 
   const handleFavoriteClick = (

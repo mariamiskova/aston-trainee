@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import styles from "./errorBoundary.module.scss";
 
-interface IErrorBoundary {
+interface ErrorBoundaryInterface {
   children: ReactNode;
 }
 
@@ -11,7 +11,7 @@ interface State {
   hasError: boolean;
 }
 
-class ErrorBoundary extends Component<IErrorBoundary, State> {
+class ErrorBoundary extends Component<ErrorBoundaryInterface, State> {
   static propTypes = {
     children: PropTypes.oneOfType([
       PropTypes.node,
@@ -19,7 +19,7 @@ class ErrorBoundary extends Component<IErrorBoundary, State> {
     ]).isRequired,
   };
 
-  constructor(props: IErrorBoundary) {
+  constructor(props: ErrorBoundaryInterface) {
     super(props);
     this.state = { hasError: false };
   }
