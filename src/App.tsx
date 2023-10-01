@@ -1,6 +1,6 @@
 import React, { lazy, ReactNode, Suspense } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./firebase";
 import { Grid } from "react-loader-spinner";
 import { ThemeConsumer, ThemeProvider } from "./themeContext";
@@ -9,6 +9,8 @@ import styles from "./App.module.scss";
 
 import { store } from "./store";
 import SwitchButton from "./components/switchButton/switchButton";
+import { themeLight } from "./themeContext/constants";
+import { useAuth } from "./hooks/useAuth";
 
 const Header = lazy(() => import("./components/header/header"));
 const Detail = lazy(() => import("./pages/detail/detail"));
@@ -20,6 +22,17 @@ const Favorite = lazy(() => import("./pages/favorite/favorite"));
 const ErrorBoundary = lazy(
   () => import("./components/errorBoundary/errorBoundary")
 );
+
+interface RequireAuthInterface {
+  children: ReactNode;
+  redirectTo: string;
+}
+
+function RequireAuth({ children, redirectTo }: RequireAuthInterface) {
+  const { isAuth } = useAuth();
+
+  return isAuth ? <>{children}</> : <Navigate to={redirectTo} />;
+}
 
 export function componentWithContext(component: ReactNode) {
   const renderMyComponent = (theme: Record<string, string | (() => void)>) => {
@@ -63,8 +76,23 @@ export function componentWithContext(component: ReactNode) {
                   <Route path="/:artworkId" element={<Detail />} />
                   <Route path="/signup" element={<Register />} />
                   <Route path="/signin" element={<Login />} />
-                  <Route path="/history" element={<History />} />
-                  <Route path="/favorites" element={<Favorite />} />
+                  <Route
+                    path="/history"
+                    element={
+                      <RequireAuth redirectTo="/">
+                        <History />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route
+                    path="/favorites"
+                    element={
+                      <RequireAuth redirectTo="/">
+                        <Favorite />
+                      </RequireAuth>
+                    }
+                  />
+                  <Route></Route>
                 </Routes>
               </div>
             </BrowserRouter>
@@ -73,6 +101,7 @@ export function componentWithContext(component: ReactNode) {
       </div>
     );
   };
+
   return (
     <ThemeConsumer>
       {(theme: { themeColor: string; toggleTheme: () => void }) =>
@@ -85,7 +114,7 @@ export function componentWithContext(component: ReactNode) {
 function App() {
   return (
     <Provider store={store}>
-      <ThemeProvider theme={{ themeColor: "#ffe4c4" }}>
+      <ThemeProvider theme={{ themeColor: themeLight }}>
         {componentWithContext(<></>)}
       </ThemeProvider>
     </Provider>

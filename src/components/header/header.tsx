@@ -18,6 +18,7 @@ const Header = ({ themeButton }: HeaderInterface) => {
 
   const handleClick = () => {
     dispatch(removeUser());
+    localStorage.clear();
   };
 
   return (

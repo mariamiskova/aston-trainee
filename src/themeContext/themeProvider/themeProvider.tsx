@@ -2,7 +2,7 @@ import React, { ReactNode, useCallback, useMemo, useState } from "react";
 import PropTypes from "prop-types";
 
 import { ContextInterface, Provider } from "../context";
-import { defaultTheme, themes } from "../constants";
+import { defaultTheme } from "../constants";
 
 interface ThemeProviderInterface {
   theme: Partial<ContextInterface>;
@@ -11,6 +11,7 @@ interface ThemeProviderInterface {
 
 function ThemeProvider({ theme, children }: ThemeProviderInterface) {
   const [themeValue, setThemeValue] = useState(true);
+  console.log(theme, typeof theme);
 
   const toggleTheme = useCallback(() => {
     setThemeValue((prev) => !prev);
@@ -21,11 +22,19 @@ function ThemeProvider({ theme, children }: ThemeProviderInterface) {
     [themeValue]
   );
 
-  return <Provider value={{ themeColor, toggleTheme }}>{children}</Provider>;
+  const providerValue = useMemo(
+    () => ({ themeColor, toggleTheme }),
+    [themeColor, toggleTheme]
+  );
+
+  return <Provider value={providerValue}>{children}</Provider>;
 }
 
 ThemeProvider.propTypes = {
-  theme: PropTypes.oneOf(themes),
+  theme: PropTypes.shape({
+    themeColor: PropTypes.string,
+    toggleTheme: PropTypes.func,
+  }),
   children: PropTypes.node,
 };
 

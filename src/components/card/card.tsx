@@ -89,12 +89,12 @@ const Card = ({
 };
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   image_id: PropTypes.string.isRequired,
-  artist_title: PropTypes.string.isRequired,
+  artist_title: PropTypes.string,
   date_display: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  artwork_type_title: PropTypes.string.isRequired,
+  artwork_type_title: PropTypes.string,
   favoriteCallback: PropTypes.func,
   buttonIcon: PropTypes.element,
   disabledButton: PropTypes.bool,

@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../hooks/useAuth";
 import { AppDispatch } from "../../store";
 import { historyData } from "../../store/history/historySelectors";
 import {
@@ -15,13 +14,6 @@ const History = () => {
   const historyList = useSelector(historyData);
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth } = useAuth();
-
-  useEffect(() => {
-    if (!isAuth) {
-      navigate("/signup");
-    }
-  }, [isAuth]);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const historyItemId = (e.target as HTMLDivElement).id;

@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import Card from "../../components/card/card";
 import CrossIcon from "../../components/ui/icons/crossIcon/crossIcon";
 import LikeIcon from "../../components/ui/icons/likeIcon/likeIcon";
-import { useAuth } from "../../hooks/useAuth";
 import { AppDispatch } from "../../store";
 import { favoriteData } from "../../store/favorite/favoriteSelectors";
 import {
@@ -17,14 +15,6 @@ import styles from "./favorite.module.scss";
 const Favorite = () => {
   const favoriteItems = useSelector(favoriteData);
   const dispatch: AppDispatch = useDispatch();
-  const navigate = useNavigate();
-  const { isAuth } = useAuth();
-
-  useEffect(() => {
-    if (!isAuth) {
-      navigate("/signup");
-    }
-  }, [isAuth]);
 
   const favoriteCallback = (callbackId: string) => {
     dispatch(removeFavoriteItem(callbackId));
